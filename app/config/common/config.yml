@@ -1,0 +1,32 @@
+imports:
+    - { resource: parameters.yml }
+
+framework:
+    secret: %secret%
+    assets: ~
+    templating:
+        engines: ['twig']
+    profiler: { only_exceptions: false }
+
+twig:
+  paths:
+    "%kernel.root_dir%/../src/Infrastructure/Web/WebBundle/Resources/view": __main__
+
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/data/DoctrineMigrations"
+    namespace: Application\Migrations
+    table_name: migration_versions
+    name: Application Migrations

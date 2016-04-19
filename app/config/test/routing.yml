@@ -1,0 +1,2 @@
+imports:
+  - { resource: '../common/routing.yml' }
